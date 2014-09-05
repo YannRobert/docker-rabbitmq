@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+MAINTAINER Yann Robert <yann.robert@anantaplex.com>
 
 # Install RabbitMQ
 RUN apt-get update && \
