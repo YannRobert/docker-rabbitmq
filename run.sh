@@ -6,7 +6,7 @@ if [ ! -f /.rabbitmq_password_set ]; then
 	/set_rabbitmq_password.sh
 fi
 
-if [ ! -f /etc/rabbitmq/rabbitmq.config ]; then
+if [ -f /etc/rabbitmq/rabbitmq.config ]; then
     echo "File /etc/rabbitmq/rabbitmq.config already exists, content is :"
     echo "<<"
     cat /etc/rabbitmq/rabbitmq.config
