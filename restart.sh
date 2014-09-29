@@ -8,7 +8,10 @@ set -e
 mkdir -p ~/rabbitmq-etc
 mkdir -p ~/rabbitmq-ssl
 
-docker run -d -p 5672:5672 -p 5671:5671 -p 15672:15672 -p 15671:15671 -v ~/rabbitmq-etc:/etc/rabbitmq -v /etc/localtime:/etc/localtime:ro -e RABBITMQ_PASS="adminpassword" --name rabbitmq rabbitmq
+# On a public server, the management plugin should be exposed on port 80 and 443 in order to be accessible to user behind a firewall
+# docker run -d -p 5672:5672 -p 5671:5671 -p 443:15672 -v ~/rabbitmq-etc:/etc/rabbitmq -v /etc/localtime:/etc/localtime:ro -e RABBITMQ_PASS="adminpassword" --name rabbitmq rabbitmq
+# but on a developer machine, the default port are more suitable
+docker run -d -p 5672:5672 -p 5671:5671 -p 15672:15672 -v ~/rabbitmq-etc:/etc/rabbitmq -v /etc/localtime:/etc/localtime:ro -e RABBITMQ_PASS="adminpassword" --name rabbitmq rabbitmq
 
 echo "Waiting for the server to start ..."
 sleep 5
