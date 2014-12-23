@@ -1,0 +1,18 @@
+# copy this file to /usr/lib/systemd/system/rabbitmq.service
+# execute command : systemctl restart rabbitmq.service
+# enable execution on startup with : chkconfig rabbitmq on
+
+[Unit]
+Description=RabbitMQ container
+Author=Me
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a rabbitmq
+ExecStop=/usr/bin/docker stop -t 2 rabbitmq
+
+[Install]
+WantedBy=multi-user.target
+
+
