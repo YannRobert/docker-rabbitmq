@@ -10,6 +10,9 @@ fi
 chown -R rabbitmq:rabbitmq /var/lib/rabbitmq
 
 if [ -z "$CLUSTER_WITH" ] ; then
+    echo "Sleeping for 5 seconds ..."
+    sleep 5
+    echo "Starting rabbitmq-server ..."
     /usr/sbin/rabbitmq-server
 else
     if [ -f /.CLUSTERED ] ; then
